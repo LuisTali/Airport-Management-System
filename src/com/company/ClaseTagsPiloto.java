@@ -1,6 +1,8 @@
 package com.company;
 
-public class ClaseTagsPiloto {
+import java.io.Serializable;
+
+public class ClaseTagsPiloto implements Serializable {
     private ArrayListGenerico<String> tags;
     private ArrayListGenerico<Piloto> pilotos;
 

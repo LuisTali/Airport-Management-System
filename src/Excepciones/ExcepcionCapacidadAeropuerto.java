@@ -1,4 +1,4 @@
-package com.company;
+package Excepciones;
 
 public class ExcepcionCapacidadAeropuerto extends Exception{
     private int capacidad;

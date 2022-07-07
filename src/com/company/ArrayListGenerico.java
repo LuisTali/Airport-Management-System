@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ArrayListGenerico <V>{
+public class ArrayListGenerico <V> implements Serializable {
     V value;
     ArrayList<V> arrayList;
 

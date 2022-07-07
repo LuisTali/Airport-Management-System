@@ -1,6 +1,8 @@
 package com.company;
 
-public class Avion {
+import java.io.Serializable;
+
+public class Avion implements Serializable {
     private int ID;
     private Piloto piloto;
     private int capacidad;

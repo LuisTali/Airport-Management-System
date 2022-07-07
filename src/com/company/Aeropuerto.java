@@ -1,9 +1,10 @@
 package com.company;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Aeropuerto {
+public class Aeropuerto implements Serializable {
     private String _id;
     private boolean activo;
     private double balance;

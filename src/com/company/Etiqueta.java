@@ -1,8 +1,9 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Etiqueta {
+public class Etiqueta implements Serializable {
     private String tag;
 
     public Etiqueta(String tag) {

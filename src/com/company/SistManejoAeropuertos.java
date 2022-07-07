@@ -1,7 +1,9 @@
 package com.company;
 
+import Excepciones.ExcepcionCapacidadAeropuerto;
 import org.json.JSONArray;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -19,6 +21,8 @@ public class SistManejoAeropuertos {
     }
 
     public void cargarAeropuertosMayor(int capacidadAux){
+        if (aeropuertosMayorCapacidad != null)
+            aeropuertosMayorCapacidad.clear();
         for (Aeropuerto a : aeropuertos){
             try {
                 cargarAeropuertosMayorCapacidad(a,capacidadAux);
@@ -29,7 +33,6 @@ public class SistManejoAeropuertos {
     }
 
     public void cargarAeropuertosMayorCapacidad(Aeropuerto a,int capacidadAux) throws ExcepcionCapacidadAeropuerto {
-
             if (a.getCapacidad() > capacidadAux) aeropuertosMayorCapacidad.add(a);
             else {
                 throw new ExcepcionCapacidadAeropuerto("Capacidad de aeropuerto inferior a la deseada, Capacidad actual del Aeropuerto: " + a.getCapacidad(), a.getCapacidad());
@@ -88,6 +91,53 @@ public class SistManejoAeropuertos {
                 if (!(auxT.contains(aux))) tags.add(aux);
             }
         }
+    }
+
+    public void aeropuertoFile(){
+        try {
+            File file1 = new File("Data/Aeropuertos.bin");
+            createFolder(file1);
+            FileOutputStream fO = new FileOutputStream(file1);
+            ObjectOutputStream oO = new ObjectOutputStream(fO);
+            for (Aeropuerto a : aeropuertos){
+                oO.writeObject(a);
+            }
+            oO.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createFolder(File document) {
+        File folder;
+        folder = document.getParentFile();
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+    }
+
+    public void aeropuertoReadFile(){
+        try {
+            File file1 = new File("Data/Aeropuertos.bin");
+            FileInputStream fI = new FileInputStream(file1);
+            ObjectInputStream oI = new ObjectInputStream(fI);
+            int lectura = 1;
+            while (lectura == 1){
+                Aeropuerto aux = (Aeropuerto) oI.readObject();
+                añadirAeropuerto(aux);
+            }
+            oI.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public String mostrarTags() {

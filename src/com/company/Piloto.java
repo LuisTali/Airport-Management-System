@@ -1,6 +1,8 @@
 package com.company;
 
-public class Piloto extends Persona {
+import java.io.Serializable;
+
+public class Piloto extends Persona implements Serializable {
 
     private int idAvion;
 

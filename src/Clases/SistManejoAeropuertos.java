@@ -1,4 +1,4 @@
-package com.company;
+package Clases;
 
 import Excepciones.ExcepcionCapacidadAeropuerto;
 import org.json.JSONArray;

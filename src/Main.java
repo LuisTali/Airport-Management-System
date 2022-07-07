@@ -1,4 +1,7 @@
-package com.company;
+import Clases.Aeropuerto;
+import Clases.Avion;
+import Clases.Piloto;
+import Clases.SistManejoAeropuertos;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -16,7 +19,6 @@ public class Main {
             switch (respuesta) {
                 case 1: //Crea el sistema para controlar Aeropuertos, los añade con sus respectivos atributos y luego los muestra.
                     controlAeropuertos.añadirAeropuerto(new Aeropuerto("51hd", true, 233000.0f, 4500, "IgnacioVolador", "volaconIgnacio@gmail.com", "2235342312", "Tripulantes 1234", "bonito, bueno, lindo", LocalDateTime.of(2000, 11, 21, 3, 34), -18, 234.5f));
-
                     Aeropuerto aux = controlAeropuertos.devolverPorIndice(0);
                     aux.cargarAviones(new Avion(1, (new Piloto("Max", "Rapido", 23, 1)), 8));
                     aux.cargarAviones(new Avion(2, (new Piloto("Flash", "Verstappen", 32, 2)), 12));
@@ -79,11 +81,10 @@ public class Main {
                 case 8:
                     //Carga arreglo de Aeropuerto desde el archivo.
                     controlAeropuertos.aeropuertoReadFile();
+                    System.out.println("Arreglo Cargado");
             }
             System.out.println("Ingrese opcion");
             respuesta = teclado.nextInt();
         }
-
-        System.out.println(controlAeropuertos.mostrar());
     }
 }

@@ -1,8 +1,8 @@
-package com.company;
+package Clases;
 
 import java.io.Serializable;
 
-public abstract class Persona implements Serializable {
+public abstract class Persona implements Serializable{
     private String nombre;
     private String apellido;
     private int edad;
